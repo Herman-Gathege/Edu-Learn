@@ -5,6 +5,8 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import Courses from './components/Courses';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+
 
 
 function App() {
@@ -19,8 +21,10 @@ function App() {
                 <Route path="/courses" element={<Courses />} />
             </Routes>
             </div>
+            <Footer />
 
         </Router>
+        
     );
 }
 

@@ -17,16 +17,23 @@ function Courses() {
     }, []);
 
     return (
-        <div>
-            <h1>Available Courses</h1>
-            <ul>
+        <div className="container mt-5">
+            <h1 className="text-center mb-4">Available Courses</h1>
+            <div className="row">
                 {courses.map(course => (
-                    <li key={course.id}>
-                        <h2>{course.title}</h2>
-                        <p>{course.description}</p>
-                    </li>
+                    <div key={course.id} className="col-md-4 mb-4">
+                        <div className="card">
+                            <div className="card-body">
+                                <h5 className="card-title">{course.title}</h5>
+                                <p className="card-text">{course.description}</p>
+                                <a href="#" className="btn btn-primary">
+                                    Learn More
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 ))}
-            </ul>
+            </div>
         </div>
     );
 }
