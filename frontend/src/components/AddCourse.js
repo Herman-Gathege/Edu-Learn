@@ -62,7 +62,7 @@ function AddCourse() {
                         required
                     ></textarea>
                 </div>
-                <button type="submit" className="btn btn-primary mt-3">
+                <button type="submit" className="btn btn-success btn-lg mb-3">
                     Add Course
                 </button>
             </form>

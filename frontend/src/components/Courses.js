@@ -81,7 +81,7 @@ function Courses() {
 
         <div className="container mt-5">
             <h1 className="text-center mb-4">Available Courses</h1>
-            <Link to="/add-course" className="btn btn-primary mb-4">Add New Course</Link> {/* Link to Add Course page */}
+            <Link to="/add-course" className="btn btn-success btn-lg mb-3">Add New Course</Link> {/* Link to Add Course page */}
             <div className="row">
                 {courses.map(course => (
                     <div key={course.id} className="col-md-4 mb-4">
