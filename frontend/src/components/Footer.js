@@ -29,6 +29,11 @@ function Footer() {
                   Login
                 </a>
               </li>
+              <li>
+                <a href="/contact" className="text-white text-decoration-none">
+                Contact Us
+                </a>
+              </li>
             </ul>
           </div>
 

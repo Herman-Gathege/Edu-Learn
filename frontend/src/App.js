@@ -6,6 +6,8 @@ import Signup from './components/Signup';
 import Courses from './components/Courses';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import ContactUs from './components/ContactUs';
+
 
 
 
@@ -19,6 +21,7 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/courses" element={<Courses />} />
+                <Route path="/contact" element={<ContactUs />} />
             </Routes>
             </div>
             <Footer />
