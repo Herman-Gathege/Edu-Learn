@@ -27,7 +27,7 @@ function CourseDetail() {
             <h1>{course.title}</h1>
             <p>{course.description}</p>
             <div>{course.content}</div>
-            <Link to="/courses" className="btn btn-secondary mt-4">
+            <Link to="/courses" className="btn btn-secondary mb-4">
                 Back to Courses
             </Link>
         </div>
