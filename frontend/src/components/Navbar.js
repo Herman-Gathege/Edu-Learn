@@ -1,52 +1,16 @@
-// import React from 'react';
-// import { Link } from 'react-router-dom';
-
-// const Navbar = () => {
-//     return (
-//         <nav style={styles.navbar}>
-//             <div style={styles.brand}>
-//                 <Link to="/" style={styles.link}>EduLearn</Link>
-//             </div>
-//             <div style={styles.navLinks}>
-//                 <Link to="/" style={styles.link}>Home</Link>
-//                 <Link to="/login" style={styles.link}>Login</Link>
-//                 <Link to="/signup" style={styles.link}>Signup</Link>
-//                 <Link to="/courses" style={styles.link}>Courses</Link>
-//             </div>
-//         </nav>
-//     );
-// };
-
-// const styles = {
-//     navbar: {
-//         display: 'flex',
-//         justifyContent: 'space-between',
-//         alignItems: 'center',
-//         backgroundColor: '#4CAF50',
-//         padding: '10px 20px',
-//     },
-//     brand: {
-//         fontSize: '20px',
-//         fontWeight: 'bold',
-//         color: 'white',
-//     },
-//     navLinks: {
-//         display: 'flex',
-//         gap: '15px',
-//     },
-//     link: {
-//         color: 'white',
-//         textDecoration: 'none',
-//         fontSize: '16px',
-//     },
-// };
-
-// export default Navbar;
-
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext'; // Import the context
 
 const Navbar = () => {
+    const { isAuthenticated, logout } = useContext(AuthContext); // Get authentication state and logout function
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        logout(); // Call the logout function to clear the user's session
+        navigate('/login'); // Redirect to the login page
+    };
+
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-success">
             <div className="container-fluid">
@@ -72,30 +36,39 @@ const Navbar = () => {
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/login" className="nav-link">
-                                Login
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to="/signup" className="nav-link">
-                                Signup
-                            </Link>
-                        </li>
-                        <li className="nav-item">
                             <Link to="/courses" className="nav-link">
                                 Courses
                             </Link>
                         </li>
-                        {/* <li className="nav-item">
-                            <Link to="/add-course" className="nav-link">
-                            Add Course
-                            </Link>
-                        </li> */}
                         <li className="nav-item">
                             <Link to="/contact" className="nav-link">
-                            ContactUs
+                                Contact Us
                             </Link>
                         </li>
+                        {isAuthenticated ? (
+                            <li className="nav-item">
+                                <button
+                                    onClick={handleLogout}
+                                    className="btn btn-link nav-link"
+                                    style={{ textDecoration: 'none', color: 'white' }}
+                                >
+                                    Logout
+                                </button>
+                            </li>
+                        ) : (
+                            <>
+                                <li className="nav-item">
+                                    <Link to="/login" className="nav-link">
+                                        Login
+                                    </Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link to="/signup" className="nav-link">
+                                        Signup
+                                    </Link>
+                                </li>
+                            </>
+                        )}
                     </ul>
                 </div>
             </div>

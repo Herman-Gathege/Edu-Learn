@@ -1,5 +1,7 @@
 from app import app, db, bcrypt
 from flask import Blueprint, jsonify, request
+
+
 from models import User, Course
 
 courses_routes = Blueprint('courses', __name__)
@@ -19,12 +21,14 @@ def login():
     data = request.get_json()
     user = User.query.filter_by(email=data['email']).first()
     if user and bcrypt.check_password_hash(user.password, data['password']):
+        access_token = create_access_token(identity=user.id)  # 'identity' is typically a unique user identifier like user.id added now
         return jsonify({"message": "Login successful"}), 200
     return jsonify({"message": "Invalid credentials"}), 401
 
 
 # Fetch all courses
 @courses_routes.route('/courses', methods=['GET'])
+
 def get_courses():
     courses = Course.query.all()
     return jsonify([{
@@ -48,6 +52,7 @@ def get_course(course_id):
 
 # Route to add a new course
 @courses_routes.route('/courses', methods=['POST'])
+
 def add_course():
     data = request.get_json()
     new_course = Course(
